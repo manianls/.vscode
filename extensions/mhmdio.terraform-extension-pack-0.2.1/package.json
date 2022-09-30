@@ -1,0 +1,50 @@
+{
+	"name": "terraform-extension-pack",
+	"displayName": "Terraform IaC Extension Pack",
+	"description": "Awesome Terraform Extensions",
+	"publisher": "mhmdio",
+	"version": "0.2.1",
+	"icon": "images/icon.png",
+	"author": {
+		"name": "Mohammed Y Almusaddar"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mhmdio/vscode-terraform-extension-pack.git"
+	},
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"categories": [
+		"Extension Packs"
+	],
+	"extensionPack": [
+		"aaron-bond.better-comments",
+		"alefragnani.Bookmarks",
+		"alefragnani.project-manager",
+		"bin3377.iam-policy",
+		"Bridgecrew.checkov",
+		"codezombiech.gitignore",
+		"CoenraadS.bracket-pair-colorizer-2",
+		"Gruntfuggly.todo-tree",
+		"hashicorp.terraform",
+		"mgtrrz.terraform-completer",
+		"oderwat.indent-rainbow",
+		"run-at-scale.terraform-doc-snippets",
+		"ShiftLeftSecurity.shiftleft-scan",
+		"SteefH.terraform-documentation-links",
+		"tfsec.tfsec",
+		"hediet.vscode-drawio"
+	],
+	"__metadata": {
+		"id": "38386dc0-8e5e-48c6-ac6b-60abe7812a67",
+		"publisherId": "e120e6e3-1cdf-48d1-b063-e472ed0b51a5",
+		"publisherDisplayName": "Mohammed Yahya",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1659674927228
+	}
+}

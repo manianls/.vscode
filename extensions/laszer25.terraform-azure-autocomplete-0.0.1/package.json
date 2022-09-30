@@ -1,0 +1,74 @@
+{
+	"name": "terraform-azure-autocomplete",
+	"displayName": "Terraform Azure Autocomplete",
+	"description": "",
+	"version": "0.0.1",
+	"publisher": "laszer25",
+	"engines": {
+		"vscode": "^1.24.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://laszer25.visualstudio.com/Terraform%20Azure%20Autocomplete"
+	},
+	"categories": [
+		"Other"
+	],
+	"capabilities": {
+		"completionProvider": {
+			"resolveProvider": "true",
+			"triggerCharacters": [
+				"."
+			]
+		}
+	},
+	"activationEvents": [
+		"onLanguage:terraform"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "terraform",
+				"aliases": [
+					"Terraform",
+					"terraform"
+				],
+				"extensions": [
+					".tf",
+					".tfvars",
+					".hcl"
+				],
+				"configuration": "./terraform.configuration.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.6",
+		"tslint": "^5.8.0",
+		"@types/node": "^7.0.43",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"lodash": "^4.17.10"
+	},
+	"__metadata": {
+		"id": "d7320b75-9ba6-4ffc-9c91-6c70b38fc93d",
+		"publisherId": "d6092885-8dbd-4bc0-81ae-8d282d17b79a",
+		"publisherDisplayName": "Sisir Sagar",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1659674942464
+	}
+}

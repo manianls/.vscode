@@ -1,0 +1,108 @@
+{
+	"name": "terraform-completer",
+	"displayName": "Terraform Completer",
+	"description": "Autocomplete for terraform modules.",
+	"version": "0.2.0",
+	"publisher": "mgtrrz",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mgtrrz/terraform-completer"
+	},
+	"icon": "images/tf-completer.png",
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"license": "MIT",
+	"keywords": [
+		"autocomplete",
+		"devops",
+		"terraform",
+		"module"
+	],
+	"capabilities": {
+		"completionProvider": {
+			"resolveProvider": "true",
+			"triggerCharacters": [
+				"."
+			]
+		}
+	},
+	"activationEvents": [
+		"onLanguage:terraform"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "terraform",
+				"aliases": [
+					"Terraform",
+					"terraform"
+				],
+				"extensions": [
+					".tf",
+					".tfvars",
+					".hcl"
+				],
+				"configuration": "./terraform.configuration.json"
+			}
+		],
+		"configuration": {
+			"title": "Terraform-Completer",
+			"properties": {
+				"terraform.terraformrc_file_path": {
+					"type": "string",
+					"scope": "resource",
+					"default": "~/.terraformrc",
+					"description": "Path to your .terraformrc file, used for accessing the API key and querying the registry API."
+				},
+				"terraform.terraformrc_type": {
+					"type": "string",
+					"scope": "resource",
+					"default": "plaintext",
+					"enum": [
+						"plaintext",
+						"json"
+					],
+					"description": "File type of supplied .terraformrc file."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/mocha": "^2.2.32",
+		"@types/node": "^6.14.13",
+		"mocha": "^2.3.3",
+		"typescript": "^3.5.1",
+		"vscode": "^1.1.37"
+	},
+	"dependencies": {
+		"@types/axios": "^0.14.0",
+		"generator-code": "^1.6.9",
+		"git-checkout-interactive": "^1.0.1",
+		"lodash": "^4.17.4",
+		"yo": "^4.3.0"
+	},
+	"__metadata": {
+		"id": "535448af-2994-4442-bbeb-46dc4ea4a685",
+		"publisherId": "0142662a-e017-4953-8f47-c0afdb3382ff",
+		"publisherDisplayName": "mgtrrz",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1659674962768
+	}
+}

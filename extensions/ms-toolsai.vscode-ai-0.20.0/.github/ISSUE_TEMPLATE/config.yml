@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Public Azure ML Extension Issue Repo"
+    url: https://github.com/microsoft/vscode-tools-for-ai/issues/new?assignees=&labels=&template=general-bug-report.md&title=
+    about: "Most issues should be entered in the this public Azure ML Extension repo"

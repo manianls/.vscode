@@ -1,0 +1,252 @@
+{
+	"name": "tfsec",
+	"displayName": "tfsec",
+	"publisher": "tfsec",
+	"description": "tfsec integration for Visual Studio Code",
+	"version": "1.11.0",
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"icon": "tfsec.png",
+	"categories": [
+		"Other",
+		"Linters"
+	],
+	"languages": [
+		{
+			"id": "terraform",
+			"extensions": [
+				".tf",
+				".tf.json"
+			],
+			"aliases": [
+				"Terraform"
+			]
+		}
+	],
+	"activationEvents": [
+		"onView:tfsec.issueview",
+		"onLanguage:terraform",
+		"onCommand:tfsec.run",
+		"workspaceContains:**/*.tf"
+	],
+	"main": "./out/main.js",
+	"contributes": {
+		"configuration": {
+			"title": "tfsec",
+			"properties": {
+				"tfsec.binaryPath": {
+					"type": "string",
+					"default": "tfsec",
+					"description": "Path to tfsec if not already on the PATH"
+				},
+				"tfsec.ignoreDownloadedModules": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Don't include results from downloaded modules. (Still scanned, just not included in the results)"
+				},
+				"tfsec.fullDepthSearch": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Scan all terraform in the workspace. This will start at the top and add all terraform files into the model"
+				},
+				"tfsec.resolveIgnoreCodes": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Add the description for ignore codes inline with the code"
+				},
+				"tfsec.runOnIgnore": {
+					"type": "boolean",
+					"default": "true",
+					"description": "Automatically rerun tfsec when a check failure is ignored"
+				},
+				"tfsec.debug": {
+					"type": "boolean",
+					"default": "false",
+					"description": "Run tfsec with vebose flag to get more information"
+				},
+				"tfsec.excludedPaths": {
+					"type": "array",
+					"default": [],
+					"description": "Run tfsec but exclude these folders"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "tfsec.run",
+				"title": "tfsec: Run tfsec against workspace",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "tfsec.refresh",
+				"title": "tfsec: Refresh the issue list"
+			},
+			{
+				"command": "tfsec.updatebinary",
+				"title": "tfsec: Download the latest version of tfsec",
+				"icon": {
+					"light": "resources/light/download.svg",
+					"dark": "resources/dark/download.svg"
+				}
+			},
+			{
+				"command": "tfsec.ignore",
+				"title": "Ignore this issue instance"
+			},
+			{
+				"command": "tfsec.ignorePath",
+				"title": "Ignore path during tfsec runs"
+			},
+			{
+				"command": "tfsec.ignoreAll",
+				"title": "Ignore all instances"
+			},
+			{
+				"command": "tfsec.ignoreSeverity",
+				"title": "Ignore all instances of severity"
+			},
+			{
+				"command": "tfsec.version",
+				"title": "tfsec: Get the current version of tfsec",
+				"icon": {
+					"light": "resources/light/help.svg",
+					"dark": "resources/dark/help.svg"
+				}
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "tfsec",
+					"title": "tfsec",
+					"icon": "media/tfsec.svg"
+				}
+			]
+		},
+		"views": {
+			"tfsec": [
+				{
+					"id": "tfsec.issueview",
+					"name": "Findings Explorer",
+					"icon": "media/tfsec.svg",
+					"contextualTitle": "Findings Explorer"
+				},
+				{
+					"id": "tfsec.helpview",
+					"name": "Findings Help",
+					"type": "webview",
+					"contextualTitle": "Findings Help"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "tfsec.issueview",
+				"contents": "No issues are found.\n[Run tfsec now](command:tfsec.run)"
+			},
+			{
+				"view": "tfsec.helpview",
+				"contents": "No check selected. Run tfsec and choose a failed check from the explorer"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "tfsec.ignorePath",
+					"when": "resourceExtname == .tf || explorerResourceIsFolder"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "tfsec.ignore",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "tfsec.run",
+					"when": "view == tfsec.issueview",
+					"group": "navigation@1"
+				},
+				{
+					"command": "tfsec.updatebinary",
+					"when": "view == tfsec.issueview",
+					"group": "navigation@2"
+				},
+				{
+					"command": "tfsec.version",
+					"when": "view == tfsec.issueview",
+					"group": "navigation@2"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "tfsec.ignore",
+					"when": "view == tfsec.issueview && viewItem == TFSEC_FILE_LOCATION"
+				},
+				{
+					"command": "tfsec.ignoreAll",
+					"when": "view == tfsec.issueview && viewItem == TFSEC_CODE"
+				},
+				{
+					"command": "tfsec.ignoreSeverity",
+					"when": "view == tfsec.issueview && viewItem == TFSEC_SEVERITY"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "yaml",
+				"path": "./src/snippets/custom_checks.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"test-compile": "tsc -p ./",
+		"compile": "tsc -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts"
+	},
+	"devDependencies": {
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.20.13",
+		"@types/semver": "^7.3.6",
+		"@types/vscode": "^1.54.0",
+		"@typescript-eslint/eslint-plugin": "^4.25.0",
+		"@typescript-eslint/parser": "^4.25.0",
+		"esbuild": "^0.14.11",
+		"eslint": "^7.27.0",
+		"mocha": "^8.4.0",
+		"typescript": "^4.5.4",
+		"vscode-test": "^1.5.0"
+	},
+	"repository": {
+		"url": "https://github.com/aquasecurity/vscode-tfsec"
+	},
+	"dependencies": {
+		"@types/uuid": "^8.3.4",
+		"semver": "^7.3.5",
+		"typescipt": "^1.0.0",
+		"uuid": "^8.3.2",
+		"vsce": "^2.10.0"
+	},
+	"__metadata": {
+		"id": "3afd2649-0952-47d8-a3a4-aedbb8c58173",
+		"publisherId": "ad776ff3-e1ba-4f52-80e9-1a5a5b20d7f0",
+		"publisherDisplayName": "tfsec",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"preRelease": false,
+		"installedTimestamp": 1659674946013
+	}
+}

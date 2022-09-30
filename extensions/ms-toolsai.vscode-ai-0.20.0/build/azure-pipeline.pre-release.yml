@@ -1,0 +1,56 @@
+# Run on a schedule
+trigger: none
+pr: none
+
+schedules:
+  - cron: '0 9 * * Mon-Fri' # 9am UTC, Monday-Friday (2am PDT, after VS Code pre-release builds which is 11pm PDT)
+    displayName: Nightly Release Schedule
+    always: true
+    branches:
+      include:
+        - main
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: microsoft/vscode-engineering
+      ref: main
+      endpoint: Monaco
+
+
+extends:
+  template: azure-pipelines/extension/pre-release.yml@templates
+  parameters:
+    buildSteps:
+      - task: Bash@3
+        displayName: Update .npmrc file
+        inputs:
+          targetType: 'inline'
+          script: |
+            echo '@vs:registry=https://devdiv.pkgs.visualstudio.com/_packaging/VS/npm/registry/' >> .npmrc
+            echo '@azureml:registry=https://msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/registry/' >> .npmrc
+            echo '@vs:always-auth=true' >> .npmrc
+            echo '@azureml:always-auth=true' >> .npmrc
+            echo '' >> .npmrc
+            echo '; begin auth token' >> .npmrc
+            echo '//msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/registry/:username=msdata' >> .npmrc
+            echo '//msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/registry/:_password=$(NPM_TOKEN_BASE64_FOR_MSDATA)' >> .npmrc
+            echo '//msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/registry/:email=npm requires email to be set but doesn't use the value' >> .npmrc
+            echo '//msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/:username=msdata' >> .npmrc
+            echo '//msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/:_password=$(NPM_TOKEN_BASE64_FOR_MSDATA)' >> .npmrc
+            echo '//msdata.pkgs.visualstudio.com/_packaging/vienna-shared-ux%40Local/npm/:email=npm requires email to be set but doesn't use the value' >> .npmrc
+            echo '; end auth token' >> .npmrc
+
+      - script: npm run vscode:prepublish
+        displayName: Compile
+
+      - script: >
+          node ./build/prepare-nightly-build.js
+          -v "$VERSION"
+        displayName: Generate package.json
+
+      - script: |
+          mv ./package.json ./package.json.bak
+          mv ./package.insiders.json ./package.json
+        displayName: Override package.json for insiders

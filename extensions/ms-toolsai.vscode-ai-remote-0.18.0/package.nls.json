@@ -1,0 +1,75 @@
+{
+    "configuration.title": "Azure Machine Learning - Remote",
+
+    "authenticationScope.description": "The AAD authentication scope to use while requesting the bearer token",
+    "logging.level.description": "The level of message in the extension logs",
+
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "continueLiteral": "Continue",
+
+    "authMalformedTokenAcquisitionParams": "Internal extension error: Token acquisition parameters cannot be read from extension context. Please try again",
+    "authCannotAcquireToken": "Cannot acquire bearer token to authenticate the user. Unknown Error occured while trying to acquire the token.",
+
+    "authorityErrorsUnsupportedPrefix": "Unsupported authority prefix {0}.",
+    "authorityErrorsParse": "Failed to parse remote authority {0}.",
+    "authorityErrorsParamsParse": "Failed to parse remote authority parameters {0}.",
+
+    "clientOutputChannelName": "Azure ML - Remote",
+
+    "diagnosticReportRunning": "Running diagnostic report on {0}",
+    "diagnosticReportUnparsableOutput": "Cannot parse output from Terminal Output",
+
+    "jupyterTerminalConnectError": "Cannot connect to Jupyter Lab Terminal. Please try again.",
+    "jupyterTerminalDisposeError": "The terminal process did not finish within {0} seconds. Aborting to exit.",
+
+    "remoteResolverAuthorizing": "Authorizing to {0}: {1}",
+    "remoteResolverSettingUp": "Setting up remote connection",
+    "remoteResolverActivationMising": "Resolve activation missing from package.json",
+    "remoteResolverNeedsReload": "Your connection was idle for some time, we need to reload the window. We have saved your data",
+
+    "remoteResolverErrorHandlerAuthorityError": "If you are opening from your VS Code history or just opened your VS Code, please close this remote connection. Retry connecting to the Remote target using the Azure ML extension or the Azure ML Studio.",
+    "remoteResolverErrorHandlerFailedToConnect": "Failed to connect to target. Make sure that it exists and is in a running state (Error: {0})",
+    "remoteResolverErrorHandlerForbidden": "Connection is forbidden. Please make sure that you are logged in with the right Azure Account and the Remote target exists. (Error: {0})",
+    "remoteResolverErrorHandlerLegacyRemoteAuthority": "Failed to connect to target. Please install the latest version of Azure Machine Learning and retry connecting from the ML Studio or the extension. (Error: {0})",
+    "remoteResolverErrorHandlerTargetNotFound": "Failed to connect to target. Please retry connecting from the extension or ML Studio. (Error: {0})",
+    "remoteResolverErrorHandlerCloseRemoteConnection": "Close Remote Connection",
+
+    "remoteTargetErrorsNotFound": "Remote target not found for id {0}",
+    "remoteTargetErrorsLegacyRemoteAuthority": "Unsupported legacy remote authority {0}",
+
+    "serverInstallersServerInstallerBaseUnparsableOutput": "Cannot parse output from Terminal Output",
+    "serverInstallersServerInstallerBaseUnknownError": "Unknown Error occured in installing {0} on remote machine.",
+    "serverInstallersServerInstallerBaseAlreadyInProgress": "Server installation process already in progress - waiting and retrying",
+    "serverInstallersServerInstallerBaseDownloadFailed": "Downloading {0} failed. Please try again later.",
+    "serverInstallersServerInstallerBaseNoDownloaderAvailable": "Downloading {0} failed - please install either curl or wget on the remote.",
+    "serverInstallersServerInstallerBaseUnsupportedArch": "The remote host's architecture is not supported",
+    "serverInstallersServerInstallerBaseStatusCheckFailed": "Server status check failed - waiting and retrying",
+    "serverInstallersServerInstallerBaseFailedToStart": "The {0} failed to start",
+    "serverInstallersServerInstallerBaseCreateInstallDirFailed": "Failed to create the remote server's install directory",
+    "serverInstallersServerInstallerBaseVSCodeServerNotRunning": "VS Code server not running",
+    "serverInstallersServerInstallerBaseNoBash": "Bash not found on the remote machine",
+    "serverInstallersServerInstallerBaseCannotParsePlatform": "Cannot parse platform from server output",
+    "serverInstallersServerInstallerBaseUnsupportedPlatform": "The remote host's platform is not supported",
+    "serverInstallersServerInstallerBaseCannotParsePort": "Cannot parse remote port from server output",
+    "serverInstallersVSCodeServerInstallerInstalling": "Installing VS Code server on {0}",
+    "serverInstallersVSCodeServerInstallerRetry": "Retry - {0}",
+    "serverInstallersVSCodeServerInstallerRetriesExhausted": "Maximum retries exhausted. Could not install VS Code server on {0}: {1}",
+    "serverInstallersVSCodeServerInstallerUninstalling": "Uninstalling VS Code server on {0}",
+    "serverInstallersVSCodeServerInstallerKilling": "Killing VS Code server on {0}",
+    "serverInstallersVSCodeServerInstallerTimedOut": "VS Code server installation timed out.",
+    "serverInstallersVSCodeServerInstallerCannotConnectToTarget": "Cannot communicate with the Jupyter endpoint.",
+    "serverInstallersVSCodeServerInstallerKilled": "VS Code server stopped on {0}",
+    "serverInstallersVSCodeServerInstallerUninstalled": "Successfully uninstalled VS Code server on {0} ",
+    "serverInstallersVSCodeServerInstallerKillAndRetry": "Kill VS Code server and retry",
+    "serverInstallersWebsocketServerInstallerInstalling": "Installing Azure ML Websocket server on {0}",
+    "serverInstallersWebsocketServerInstallerRetry": "Retry - {0}",
+    "serverInstallersWebsocketServerInstallerRetriesExhausted": "Maximum retries exhausted. Could not install Azure ML websocket server on {0}: {1}",
+    "serverInstallersWebsocketServerInstallerKilling": "Killing Azure ML websocket server on {0}",
+    "serverInstallersWebsocketServerInstallerTimedOut": "Azure ML websocket server installation timed out.",
+    "serverInstallersWebsocketServerInstallerCannotConnectToTarget": "Cannot communicate with the Jupyter endpoint.",
+    "serverInstallersWebsocketServerInstallerKilled": "Azure ML websocket server stopped on {0}",
+    "serverInstallersWebsocketServerInstallerKillAndRetry": "Kill websocket server and retry"
+}

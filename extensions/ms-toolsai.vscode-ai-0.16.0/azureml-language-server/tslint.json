@@ -1,0 +1,10 @@
+{
+    "extends": "../tslint.json",
+    "linterOptions": {
+        "exclude": ["**/*.d.ts"]
+    },
+    "rules": {
+        "strict-boolean-expressions": false,
+        "no-string-literal": false
+    }
+}

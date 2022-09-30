@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+		<Metadata>
+			<Identity Language="en-US" Id="io" Version="3.2.0" Publisher="trunk" />
+			<DisplayName>Trunk</DisplayName>
+			<Description xml:space="preserve">The last linter you&apos;ll ever need</Description>
+			<Tags>actionlint,angular,ansible-lint,ansible,autopep8,bandit,bash,bazel,black,brakeman,buf,buildifier,C,C++,cfnlint,clang-format,clang-tidy,clippy,cloudformation,codespell,cspell,css,cue-fmt,cue,detekt,docker,dotenv-linter,eslint,flake8,flow,formatters,formatting,gitleaks,go,gofmt,goimports,golang,golangci-lint,graphql,grpc,hadolint,haml-lint,haml,html,include-what-you-use,isort,iwyu,java,javascript,json,jsx,kotlin,ktlint,markdown,markdownlint,mdx,megalinter,metalinter,prettier,protobuf,pylint,python,rubocop,ruby,rufo,rust,rustfmt,scala,scalafmt,scss,semgrep,shellcheck,shfmt,sql-formatter,sql,sqlfluff,standard,standardrb,starlark,stylelint,superlinter,svg,svgo,taplo,terraform-fmt,terraform-validate,terraform,tflint,toml,tsx,typescript,vue,xml,yaml,yamllint,yapf</Tags>
+			<Categories>Linters,Formatters,Programming Languages,Other,Education</Categories>
+			<GalleryFlags>Public</GalleryFlags>
+			
+			<Properties>
+				<Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.62.0" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
+				<Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="workspace" />
+				<Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="" />
+				
+				<Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://trunk.io" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://trunk.io" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Repository" Value="https://trunk.io" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://slack.trunk.io" />
+				<Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://trunk.io" />
+				<Property Id="Microsoft.VisualStudio.Services.Branding.Color" Value="#2F323D" />
+				<Property Id="Microsoft.VisualStudio.Services.Branding.Theme" Value="dark" />
+				<Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+				
+				<Property Id="Microsoft.VisualStudio.Services.CustomerQnALink" Value="https://slack.trunk.io" />
+			</Properties>
+			
+			<Icon>extension/assets/icon.png</Icon>
+		</Metadata>
+		<Installation>
+			<InstallationTarget Id="Microsoft.VisualStudio.Code"/>
+		</Installation>
+		<Dependencies/>
+		<Assets>
+			<Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+			<Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/readme.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Content.Changelog" Path="extension/changelog.md" Addressable="true" />
+<Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/assets/icon.png" Addressable="true" />
+		</Assets>
+	</PackageManifest>

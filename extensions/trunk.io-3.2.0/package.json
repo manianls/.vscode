@@ -1,0 +1,548 @@
+{
+	"name": "io",
+	"displayName": "Trunk",
+	"description": "The last linter you'll ever need",
+	"publisher": "trunk",
+	"icon": "assets/icon.png",
+	"homepage": "https://trunk.io",
+	"galleryBanner": {
+		"color": "#2F323D",
+		"theme": "dark"
+	},
+	"repository": {
+		"url": "https://trunk.io"
+	},
+	"bugs": {
+		"url": "https://slack.trunk.io"
+	},
+	"os": [
+		"darwin",
+		"linux"
+	],
+	"version": "3.2.0",
+	"engines": {
+		"vscode": "^1.62.0",
+		"node": ">=14.0.0"
+	},
+	"categories": [
+		"Linters",
+		"Formatters",
+		"Programming Languages",
+		"Other",
+		"Education"
+	],
+	"keywords": [
+		"actionlint",
+		"angular",
+		"ansible-lint",
+		"ansible",
+		"autopep8",
+		"bandit",
+		"bash",
+		"bazel",
+		"black",
+		"brakeman",
+		"buf",
+		"buildifier",
+		"C",
+		"C++",
+		"cfnlint",
+		"clang-format",
+		"clang-tidy",
+		"clippy",
+		"cloudformation",
+		"codespell",
+		"cspell",
+		"css",
+		"cue-fmt",
+		"cue",
+		"detekt",
+		"docker",
+		"dotenv-linter",
+		"dotenv-linter",
+		"eslint",
+		"flake8",
+		"flow",
+		"formatters",
+		"formatting",
+		"gitleaks",
+		"go",
+		"gofmt",
+		"goimports",
+		"golang",
+		"golangci-lint",
+		"graphql",
+		"grpc",
+		"hadolint",
+		"hadolint",
+		"haml-lint",
+		"haml",
+		"html",
+		"include-what-you-use",
+		"isort",
+		"iwyu",
+		"java",
+		"javascript",
+		"json",
+		"jsx",
+		"kotlin",
+		"kotlin",
+		"ktlint",
+		"markdown",
+		"markdownlint",
+		"mdx",
+		"megalinter",
+		"metalinter",
+		"prettier",
+		"protobuf",
+		"pylint",
+		"python",
+		"rubocop",
+		"ruby",
+		"rufo",
+		"rust",
+		"rustfmt",
+		"scala",
+		"scalafmt",
+		"scss",
+		"semgrep",
+		"shellcheck",
+		"shfmt",
+		"sql-formatter",
+		"sql",
+		"sqlfluff",
+		"standard",
+		"standardrb",
+		"starlark",
+		"starlark",
+		"stylelint",
+		"superlinter",
+		"svg",
+		"svgo",
+		"taplo",
+		"terraform-fmt",
+		"terraform-validate",
+		"terraform",
+		"tflint",
+		"toml",
+		"toml",
+		"tsx",
+		"typescript",
+		"vue",
+		"xml",
+		"yaml",
+		"yamllint",
+		"yapf"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"extensionKind": [
+		"workspace"
+	],
+	"main": "./out/index.js",
+	"qna": "https://slack.trunk.io",
+	"contributes": {
+		"viewsWelcome": [
+			{
+				"view": "trunkTreeView",
+				"contents": "In order to use trunk, you must open or clone a trunk enabled repository.\n[Open Folder](command:vscode.openFolder)\n[Clone Repository](command:git.clone)\nTo learn more about how to use Trunk and it's integration with VS Code [read our docs](https://docs.trunk.io).",
+				"when": "os.platform != win32 && workbenchState == empty || os.platform != win32 && trunk.notRepo"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": " 👋  Welcome to Trunk!\nTo start, initialize trunk in your repo:\n[Initialize Trunk](command:trunk.initTrunk)\n☝️ When you initialize, we'll scan the files in your repo and produce a good starting config in your repo's .trunk/trunk.yaml where you can enable new linters and formatters ([docs](https://docs.trunk.io)).\n 🙊 Don't want to commit a trunk config file yet? You can add a local-only gitignore for .trunk in your .git/info/exclude file to use trunk in the meantime ([docs](https://docs.trunk.io)).",
+				"when": "os.platform != win32 && workbenchState != empty && trunk.initRequired"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": " 👋  Welcome to Trunk!\nTo start, initialize trunk in your repo:\n[Initialize Trunk](command:trunk.initTrunk)\n☝️ When you initialize, we'll scan the files in your repo and produce a good starting config in your repo's .trunk/trunk.yaml where you can enable new linters and formatters ([docs](https://docs.trunk.io)).\n 🙊 Don't want to commit a trunk config file yet? You can add a local-only gitignore for .trunk in your .git/info/exclude file to use trunk in the meantime ([docs](https://docs.trunk.io)).",
+				"when": "os.platform != win32 && workbenchState != empty && trunk.initRequired"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": "The installed version of trunk is below the minimum required version for this extension.\n[Upgrade Trunk](command:trunk.upgradeTrunk)",
+				"when": "trunk.upgradeRequired"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "In order to use trunk, you must open or clone a trunk enabled repository.\n[Open Folder](command:vscode.openFolder)\n[Clone Repository](command:git.clone)\nTo learn more about how to use Trunk and it's integration with VS Code [read our docs](https://docs.trunk.io).",
+				"when": "os.platform != win32 && workbenchState == empty || os.platform != win32 && trunk.notRepo"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "The installed version of trunk is below the minimum required version for this extension.\n[Upgrade Trunk](command:trunk.upgradeTrunk)",
+				"when": "trunk.upgradeRequired && workbenchState != empty"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": "Trunk ran into a problem.\n[Restart Trunk](command:trunk.restartExtension)",
+				"when": "trunk.statusClosed"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "Trunk ran into a problem.\n[Restart Trunk](command:trunk.restartExtension)",
+				"when": "trunk.statusClosed"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": "Invalid config detected. Please update your trunk config.",
+				"when": "trunk.invalidConfig"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "Invalid config detected. Please update your trunk config.",
+				"when": "trunk.invalidConfig"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": "Trunk is only supported on Windows via WSL or when working inside a remote Linux or OS X workspace via SSH. Please see more information [here](https://code.visualstudio.com/docs/remote/remote-overview). If you are interested in us adding full Windows support, please contact us on our [Community Slack channel](https://slack.trunk.io).",
+				"when": "os.platform == win32"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "Trunk is only supported on Windows via WSL or when working inside a remote Linux or OS X workspace via SSH. Please see more information [here](https://code.visualstudio.com/docs/remote/remote-overview). If you are interested in us adding full Windows support, please contact us on our [Community Slack channel](https://slack.trunk.io).",
+				"when": "os.platform == win32"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": "Unable to successfully initialize with Trunk. Please verify that the installed version of the extension is compatible with your installed version of Trunk.\n[Restart Trunk](command:trunk.restartExtension)",
+				"when": "trunk.invalidInitializationParams"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "Unable to successfully initialize with Trunk. Please verify that the installed version of the extension is compatible with your installed version of Trunk.\n[Restart Trunk](command:trunk.restartExtension)",
+				"when": "trunk.invalidInitializationParams"
+			},
+			{
+				"view": "trunkTreeView",
+				"contents": "Initializing...",
+				"when": "trunk.initializing"
+			},
+			{
+				"view": "explorerTrunkTreeView",
+				"contents": "Initializing...",
+				"when": "trunk.initializing"
+			}
+		],
+		"commands": [
+			{
+				"command": "trunk.runNotificationCommand",
+				"title": "Trunk: Run Notification Command"
+			},
+			{
+				"command": "trunk.continueTrunk",
+				"title": "Trunk: Continue",
+				"icon": "$(play)"
+			},
+			{
+				"command": "trunk.pauseTrunk",
+				"title": "Trunk: Pause",
+				"icon": "$(primitive-square)"
+			},
+			{
+				"command": "trunk.grayOutNonBlockingIssuesEnable",
+				"title": "Trunk: Enable Graying Out Non-blocking Issues",
+				"icon": {
+					"light": "assets/show.svg",
+					"dark": "assets/show.svg"
+				}
+			},
+			{
+				"command": "trunk.grayOutNonBlockingIssueDisable",
+				"title": "Trunk: Disable Graying Out Non-blocking Issues",
+				"icon": {
+					"light": "assets/hide.svg",
+					"dark": "assets/hide.svg"
+				}
+			},
+			{
+				"command": "trunk.printDebugState",
+				"title": "Debug: Print Trunk Extension State"
+			},
+			{
+				"command": "trunk.internal.goToIssue",
+				"title": "Trunk: Go to Issue"
+			},
+			{
+				"command": "trunk.internal.goToFile",
+				"title": "Trunk: Open File"
+			},
+			{
+				"command": "trunk.internal.formatFile",
+				"title": "Trunk: Format File"
+			},
+			{
+				"command": "trunk.internal.copyIssueToClipboard",
+				"title": "Trunk: Copy Message to Clipboard"
+			},
+			{
+				"command": "trunk.internal.copyIssueCodeToClipboard",
+				"title": "Trunk: Copy Issue Code to Clipboard"
+			},
+			{
+				"command": "trunk.installCommandLine",
+				"title": "Trunk: Install 'trunk' command in PATH"
+			},
+			{
+				"command": "trunk.internal.ignoreIssue",
+				"title": "Trunk: Ignore Issue"
+			},
+			{
+				"command": "trunk.internal.applyAutofix",
+				"title": "Trunk: Apply Autofix"
+			},
+			{
+				"command": "trunk.restartExtension",
+				"title": "Debug: Restart Trunk Extension"
+			},
+			{
+				"command": "trunk.initTrunk",
+				"title": "Trunk: Initialize"
+			},
+			{
+				"command": "trunk.upgradeTrunk",
+				"title": "Trunk: Upgrade"
+			},
+			{
+				"command": "trunk.refreshTreeView",
+				"title": "Trunk: Refresh Tree View"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "trunkContainer",
+					"title": "Trunk",
+					"icon": "assets/sidebar-icon.svg"
+				}
+			]
+		},
+		"views": {
+			"trunkContainer": [
+				{
+					"id": "trunkTreeView",
+					"name": "Check"
+				},
+				{
+					"id": "trunkActionsView",
+					"name": "Actions",
+					"type": "webview"
+				},
+				{
+					"id": "helpAndFeedbackView",
+					"name": "Help & Feedback"
+				}
+			],
+			"explorer": [
+				{
+					"id": "explorerTrunkTreeView",
+					"name": "Trunk Check"
+				},
+				{
+					"id": "explorerHelpAndFeedbackView",
+					"name": "Trunk Help & Feedback"
+				}
+			]
+		},
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "trunk.internal.goToFile",
+					"when": "false"
+				},
+				{
+					"command": "trunk.internal.formatFile",
+					"when": "false"
+				},
+				{
+					"command": "trunk.internal.goToIssue",
+					"when": "false"
+				},
+				{
+					"command": "trunk.internal.copyIssueToClipboard",
+					"when": "false"
+				},
+				{
+					"command": "trunk.internal.copyIssueCodeToClipboard",
+					"when": "false"
+				},
+				{
+					"command": "trunk.internal.ignoreIssue",
+					"when": "false"
+				},
+				{
+					"command": "trunk.internal.applyAutofix",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "trunk.pauseTrunk",
+					"when": "view == trunkTreeView && trunk.linterQueueStrategy == auto || view == explorerTrunkTreeView && trunk.linterQueueStrategy == auto",
+					"group": "navigation@1"
+				},
+				{
+					"command": "trunk.continueTrunk",
+					"when": "view == trunkTreeView && trunk.linterQueueStrategy == onDemand || view == explorerTrunkTreeView && trunk.linterQueueStrategy == onDemand",
+					"group": "navigation@1"
+				},
+				{
+					"command": "trunk.grayOutNonBlockingIssuesEnable",
+					"when": "view == trunkTreeView && !trunk.grayOutNonBlockingIssuesEnabled || view == explorerTrunkTreeView && !trunk.grayOutNonBlockingIssuesEnabled",
+					"group": "navigation@2"
+				},
+				{
+					"command": "trunk.grayOutNonBlockingIssueDisable",
+					"when": "view == trunkTreeView && trunk.grayOutNonBlockingIssuesEnabled || view == explorerTrunkTreeView && trunk.grayOutNonBlockingIssuesEnabled",
+					"group": "navigation@2"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "trunk.internal.goToFile",
+					"when": "viewItem =~ /FileItem/",
+					"group": "navigation"
+				},
+				{
+					"command": "trunk.internal.formatFile",
+					"when": "viewItem =~ /FileItem/ && viewItem =~ /WithFormatFile/",
+					"group": "navigation"
+				},
+				{
+					"command": "trunk.internal.goToIssue",
+					"when": "viewItem =~ /DiagnosticItem/",
+					"group": "navigation"
+				},
+				{
+					"command": "trunk.internal.copyIssueToClipboard",
+					"when": "viewItem =~ /DiagnosticItem/",
+					"group": "9_cutcopypaste"
+				},
+				{
+					"command": "trunk.internal.copyIssueCodeToClipboard",
+					"when": "viewItem =~ /DiagnosticItem/",
+					"group": "9_cutcopypaste"
+				},
+				{
+					"command": "trunk.internal.ignoreIssue",
+					"when": "viewItem =~ /DiagnosticItem/ && viewItem =~ /WithIgnoreIssue/",
+					"group": "1_modification"
+				},
+				{
+					"command": "trunk.internal.applyAutofix",
+					"when": "viewItem =~ /DiagnosticItem/ && viewItem =~ /WithApplyAutofix/",
+					"group": "1_modification"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Trunk",
+			"properties": {
+				"trunk.inlineDecorators": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Enable inline decorators for lint issues (default: on)."
+				},
+				"trunk.inlineDecoratorsForAllExtensions": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": false,
+					"description": "Show inline decorators issues coming from any extension, not just Trunk (default: off)."
+				},
+				"trunk.trunkPath": {
+					"scope": "resource",
+					"type": "string",
+					"default": "",
+					"description": "Absolute or workspace-relative path to Trunk (optional)."
+				},
+				"trunk.languageServerArguments": {
+					"scope": "resource",
+					"type": "array",
+					"default": "",
+					"items": {
+						"type": "string"
+					},
+					"description": "Arguments for the Trunk language server (optional)."
+				},
+				"trunk.trace.server": {
+					"scope": "window",
+					"type": "string",
+					"enum": [
+						"off",
+						"messages",
+						"verbose"
+					],
+					"default": "off"
+				},
+				"trunk.trunkGrayOutNonBlockingIssues": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": false,
+					"description": "Toggles visualization mode where non-blocking issues will be grayed out in the tree view"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:uninstall": "node ./out/uninstall",
+		"vscode:prepublish": "rm -r out || true && ncc build src/extension.ts -o out --minify && ncc build src/uninstall/app.ts -o out/uninstall --minify",
+		"compile": "ncc build src/extension.ts -o out --source-map --no-source-map-register",
+		"build:test-runner": "tsc docker_tests/suite/*.ts --outDir docker_tests/compiled_suite --esModuleInterop --sourceMap --resolveJsonModule",
+		"build:tests": "mkdir -p docker_tests/compiled_suite && tsc docker_tests/suite/test/*.ts --outDir docker_tests/compiled_suite/test --esModuleInterop --sourceMap",
+		"pretest": "yarn compile && yarn build:test-runner && yarn build:tests",
+		"test:headless": "yarn pretest && xvfb-run -a node docker_tests/compiled_suite/runTest.js",
+		"test:container": "bazel run //trunk/vscode/docker_tests:test_image",
+		"test": "node docker_tests/compiled_suite/runTest.js",
+		"watch": "ncc build src/extension.ts -o out --watch --source-map --no-source-map-register",
+		"clean": "rm -r out || true"
+	},
+	"dependencies": {
+		"@types/vscode": "1.68.1",
+		"mixpanel": "0.16.0",
+		"moment": "^2.29.3",
+		"pluralize": "^8.0.0",
+		"promise-retry": "^2.0.1",
+		"queue-typescript": "^1.0.1",
+		"semver": "^7.3.7",
+		"simple-git": "^3.10.0",
+		"vscode-languageclient": "8.0.2",
+		"vscode-test": "1.6.1",
+		"winston": "^3.8.0",
+		"winston-transport-sentry-node": "^2.4.0",
+		"nanoid": "4.0.0",
+		"yaml": "2.1.1"
+	},
+	"devDependencies": {
+		"chai": "^4.3.6",
+		"@vscode/test-electron": "^2.1.5",
+		"@types/nanoid-dictionary": "4.2.0",
+		"@types/chai": "^4.3.1",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "9.1.1",
+		"@vercel/ncc": "0.34.0",
+		"@types/node": "16.10.3",
+		"@types/pluralize": "^0.0.29",
+		"@types/promise-retry": "^1.1.3",
+		"@types/semver": "^7.3.9",
+		"glob": "8.0.3",
+		"mocha": "10.0.0",
+		"typescript": "4.7.4",
+		"vsce": "2.9.2",
+		"chai-as-promised": "7.1.1",
+		"@types/chai-as-promised": "7.1.5",
+		"prettier": "^2.7.1"
+	},
+	"__metadata": {
+		"id": "a26fd528-6d7c-44c5-b07c-15cf93dbf619",
+		"publisherId": "7d9904fd-80d2-4407-ad40-a3d6d4f1fbd1",
+		"publisherDisplayName": "Trunk",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1664524122678
+	}
+}

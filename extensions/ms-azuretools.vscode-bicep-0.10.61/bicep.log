@@ -1,0 +1,9 @@
+2022-09-13T08:19:59.249Z info: Current log level: debug.
+2022-09-13T08:19:59.253Z info: Launching Bicep language service...
+2022-09-13T08:19:59.253Z info: Acquiring dotnet runtime...
+2022-09-13T08:20:00.698Z debug: Found dotnet command at '/__w/1/s/bicep/src/vscode-bicep/.vscode-test/user-data/User/globalStorage/ms-dotnettools.vscode-dotnet-runtime/.dotnet/6.0.8/dotnet'.
+2022-09-13T08:20:00.698Z debug: Found language server at '/__w/1/s/bicep/src/vscode-bicep/bicepLanguageServer/Bicep.LangServer.dll'.
+2022-09-13T08:20:05.522Z info: Bicep language service started.
+2022-09-13T08:20:11.292Z debug: Visualizer for /__w/1/s/bicep/src/vscode-bicep/src/test/e2e/examples/101/vm-simple-linux/main.bicep is ready.
+2022-09-13T08:20:14.082Z debug: Visualizer for /__w/1/s/bicep/src/vscode-bicep/src/test/e2e/examples/201/sql/main.bicep is ready.
+2022-09-13T08:20:14.795Z debug: Visualizer for /__w/1/s/bicep/src/vscode-bicep/src/test/e2e/examples/000/empty/main.bicep is ready.
